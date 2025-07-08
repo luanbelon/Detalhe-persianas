@@ -4,10 +4,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
-    "build": "node node_modules/vite/bin/vite.js build",
-    "preview": "vite preview",
-    "postinstall": "chmod +x node_modules/.bin/vite || true"
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "^1.2.1",

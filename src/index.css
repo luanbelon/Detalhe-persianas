@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%; /* Branco */
+    --foreground: 240 10% 3.9%; /* Cinza Escuro Quase Preto */
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 233, 100%, 20%; /* Azul Corporativo Sutil */
+    --primary-foreground: 0 0% 98%; /* Branco para contraste com azul */
+    --secondary: 240, 100%, 50%; /* Verde Suave (alternativa ou para detalhes) */
+    --secondary-foreground: 240 10% 3.9%;
+    --muted: 240 4.8% 95.9%; /* Cinza Claro */
+    --muted-foreground: 240 3.8% 46.1%; /* Cinza Médio */
+    --accent: 45 93% 47%; /* Amarelo Ouro para CTAs e destaques */
+    --accent-foreground: 240 10% 3.9%;
+    --destructive: 0 72% 51%; /* Vermelho para alertas */
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%; /* Cinza de Borda */
+    --input: 240 5.9% 90%;
+    --ring: 205 65% 45%; /* Azul para anéis de foco */
+    --radius: 0.5rem; /* Bordas levemente arredondadas */
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 51, 100%, 50%; /* Azul Corporativo Sutil */
+    --primary-foreground: 0 0% 98%; /* Branco para contraste com azul */
+    --secondary: 240, 100%, 50%; /* Verde Suave (alternativa ou para detalhes) */
+    --secondary-foreground: 240 10% 3.9%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 45 85% 55%; /* Amarelo Ouro um pouco mais claro */
+    --accent-foreground: 240 10% 3.9%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 205 60% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: 'Inter', sans-serif; /* Fonte moderna e limpa */
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+.cta-button-primary {
+  @apply bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300;
+}
+
+.cta-button-accent {
+  @apply bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg hover:shadow-xl transition-all duration-300;
+}
+
+.section-padding {
+  @apply py-16 md:py-24;
+}
+
+.glassmorphism-subtle {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px) saturate(150%);
+  -webkit-backdrop-filter: blur(8px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .glassmorphism-subtle {
+  background: rgba(20, 20, 30, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}

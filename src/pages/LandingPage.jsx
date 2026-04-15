@@ -5,7 +5,7 @@ import ServicesSection from '@/components/landing/ServicesSection';
 import AboutUsSection from '@/components/landing/AboutUsSection';
 import GallerySection from '@/components/landing/GallerySection';
 import ContactCTASection from '@/components/landing/ContactCTASection';
-import TestimonialsSection from '@/components/landing/TestimonialsSection'; // Nova seção
+// import TestimonialsSection from '@/components/landing/TestimonialsSection';
 
 const LandingPage = () => {
   return (
@@ -14,7 +14,7 @@ const LandingPage = () => {
       <ServicesSection />
       <AboutUsSection />
       <GallerySection />
-      <TestimonialsSection /> {/* Testimonials adicionados */}
+      {/* <TestimonialsSection /> */}
       <ContactCTASection />
     </div>
   );

@@ -1,34 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Eye, ChevronRight } from 'lucide-react'; // Usando ChevronRight para o botão
-import imgGaleria from '../../assets/img/galeria.jpg'
+import { ChevronRight } from 'lucide-react';
+import img001 from '../../assets/img/001.jpeg';
+import img002 from '../../assets/img/002.jpeg';
+import img003 from '../../assets/img/003.jpeg';
 
 const galleryItems = [
-  { id: 1, srcKey: "gallery-1", alt: "Persiana rolô branca em uma cozinha moderna", description: "Cozinha Minimalista" },
-  { id: 2, srcKey: "gallery-2", alt: "Cortina de linho bege em um quarto aconchegante", description: "Quarto Aconchegante" },
-  { id: 3, srcKey: "gallery-3", alt: "Persiana romana cinza em um escritório sofisticado", description: "Escritório Elegante" },
-  { id: 4, srcKey: "gallery-4", alt: "Cortina blackout em uma sala de TV escura", description: "Sala de Cinema" },
-  { id: 5, srcKey: "gallery-5", alt: "Persiana de madeira em uma sala de estar rústica", description: "Estar Rústico" },
-  { id: 6, srcKey: "gallery-6", alt: "Cortina voil translúcida em uma varanda gourmet", description: "Varanda Gourmet" },
+  { id: 1, src: img001, alt: 'Projeto de cortina e persiana sob medida 001' },
+  { id: 2, src: img002, alt: 'Projeto de cortina e persiana sob medida 002' },
+  { id: 3, src: img003, alt: 'Projeto de cortina e persiana sob medida 003' },
 ];
-
-// Mapeamento para facilitar a substituição das imagens
-const imagePlaceholders = {
-  "gallery-1": "Persiana rolô branca em cozinha moderna",
-  "gallery-2": "Cortina de linho bege em quarto aconchegante",
-  "gallery-3": "Persiana romana cinza em escritório sofisticado",
-  "gallery-4": "Cortina blackout em sala de TV escura",
-  "gallery-5": "Persiana de madeira em sala de estar rústica",
-  "gallery-6": "Cortina voil translúcida em varanda gourmet",
-};
 
 
 const GallerySection = () => {
-  const scrollToContact = (e) => {
-    e.preventDefault();
-    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const instagramLink = 'https://instagram.com/detalhe_cortinas';
 
   const galleryItemVariants = {
     hidden: { opacity: 0, y: 50, scale: 0.9 },
@@ -76,14 +62,7 @@ const GallerySection = () => {
               <img  
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
                 alt={item.alt}
-               src={imgGaleria}/>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                <p className="text-lg font-semibold text-white mb-1">{item.description}</p>
-                <div className="text-accent group-hover:text-white transition-colors">
-                  <Eye className="w-5 h-5 inline-block" />
-                  <span className="ml-1 text-sm">Ver Detalhes</span>
-                </div>
-              </div>
+               src={item.src}/>
             </motion.div>
           ))}
         </div>
@@ -95,13 +74,15 @@ const GallerySection = () => {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <Button 
-            size="lg" 
-            onClick={scrollToContact}
-            className="cta-button-primary rounded-full px-8 py-4 group"
+          <Button
+            size="lg"
+            asChild
+            className="rounded-full px-8 py-4 group bg-primary text-primary-foreground border-2 border-transparent hover:bg-primary hover:border-accent"
           >
-            Realize Seu Projeto Conosco
-            <ChevronRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            <a href={instagramLink} target="_blank" rel="noopener noreferrer">
+              Confira mais projetos no instagram
+              <ChevronRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </a>
           </Button>
         </motion.div>
       </div>

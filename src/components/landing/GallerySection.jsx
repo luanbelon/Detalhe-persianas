@@ -4,12 +4,12 @@ import { Button } from '@/components/ui/button';
 import { ChevronRight } from 'lucide-react';
 import img001 from '../../assets/img/001.jpeg';
 import img002 from '../../assets/img/002.jpeg';
-import img003 from '../../assets/img/003.jpeg';
+import img004 from '../../assets/img/6.jpeg';
 
 const galleryItems = [
   { id: 1, src: img001, alt: 'Projeto de cortina e persiana sob medida 001' },
   { id: 2, src: img002, alt: 'Projeto de cortina e persiana sob medida 002' },
-  { id: 3, src: img003, alt: 'Projeto de cortina e persiana sob medida 003' },
+  { id: 4, src: img004, alt: 'Projeto de cortina e persiana sob medida 004' },
 ];
 
 

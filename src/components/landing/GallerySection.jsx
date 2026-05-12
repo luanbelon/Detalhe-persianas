@@ -2,16 +2,35 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
-import img002 from '../../assets/img/002.jpeg';
-import img003 from '../../assets/img/003.jpeg';
-import img004 from '../../assets/img/6.jpeg';
+import img002 from '../../assets/img/002.jpeg?w=480;800;1200;1600&format=webp;jpg&as=picture';
+import img003 from '../../assets/img/003.jpeg?w=480;800;1200;1600&format=webp;jpg&as=picture';
+import img004 from '../../assets/img/6.jpeg?w=480;800;1200;1600&format=webp;jpg&as=picture';
 
 const galleryItems = [
-  { id: 2, src: img002, alt: 'Projeto de cortina e persiana sob medida 002' },
-  { id: 3, src: img003, alt: 'Projeto de cortina e persiana sob medida 003' },
-  { id: 4, src: img004, alt: 'Projeto de cortina e persiana sob medida 004' },
+  { id: 2, picture: img002, alt: 'Projeto de cortina e persiana sob medida 002' },
+  { id: 3, picture: img003, alt: 'Projeto de cortina e persiana sob medida 003' },
+  { id: 4, picture: img004, alt: 'Projeto de cortina e persiana sob medida 004' },
 ];
 
+const ResponsivePicture = ({ data, alt, sizes, className, imgClassName, ...imgProps }) => (
+  <picture className={className}>
+    {data.sources?.webp && (
+      <source type="image/webp" srcSet={data.sources.webp} sizes={sizes} />
+    )}
+    {data.sources?.jpg && (
+      <source type="image/jpeg" srcSet={data.sources.jpg} sizes={sizes} />
+    )}
+    <img
+      src={data.img.src}
+      width={data.img.w}
+      height={data.img.h}
+      alt={alt}
+      sizes={sizes}
+      className={imgClassName}
+      {...imgProps}
+    />
+  </picture>
+);
 
 const GallerySection = () => {
   const instagramLink = 'https://instagram.com/detalhe_cortinas';
@@ -58,6 +77,9 @@ const GallerySection = () => {
     })
   };
 
+  const thumbnailSizes = '(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw';
+  const lightboxSizes = '92vw';
+
   return (
     <section id="gallery" className="section-padding bg-muted">
       <div className="container mx-auto">
@@ -90,10 +112,13 @@ const GallerySection = () => {
               aria-label={`Abrir ${item.alt}`}
               className="group relative aspect-square rounded-lg overflow-hidden shadow-lg cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
-              <img
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              <ResponsivePicture
+                data={item.picture}
                 alt={item.alt}
-                src={item.src}
+                sizes={thumbnailSizes}
+                imgClassName="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
             </motion.button>
@@ -167,17 +192,23 @@ const GallerySection = () => {
               <ChevronRight className="h-7 w-7" />
             </button>
 
-            <motion.img
+            <motion.div
               key={galleryItems[activeIndex].id}
-              src={galleryItems[activeIndex].src}
-              alt={galleryItems[activeIndex].alt}
               onClick={(e) => e.stopPropagation()}
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ duration: 0.25, ease: 'easeOut' }}
-              className="max-h-[90vh] max-w-[92vw] object-contain rounded-lg shadow-2xl"
-            />
+              className="max-h-[90vh] max-w-[92vw]"
+            >
+              <ResponsivePicture
+                data={galleryItems[activeIndex].picture}
+                alt={galleryItems[activeIndex].alt}
+                sizes={lightboxSizes}
+                imgClassName="max-h-[90vh] max-w-[92vw] object-contain rounded-lg shadow-2xl"
+                decoding="async"
+              />
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

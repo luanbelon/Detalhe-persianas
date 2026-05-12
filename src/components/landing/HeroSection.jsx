@@ -43,7 +43,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
         >
-          Elegância e Conforto <br className="hidden sm:block" /> com Nossas <span className="text-accent">Cortinas e Persianas</span>
+          <span className="text-accent">Cortinas e Persianas</span> <br className="hidden sm:block" /> sob medida
         </motion.h1>
         <motion.p 
           className="text-lg md:text-xl lg:text-2xl mb-10 max-w-3xl mx-auto text-gray-200"

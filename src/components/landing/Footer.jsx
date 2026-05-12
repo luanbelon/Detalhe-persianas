@@ -35,7 +35,7 @@ const Footer = () => {
               <img
                 src={logoDetalhe}
                 alt="Detalhe Cortinas & Persianas"
-                className="h-14 w-auto object-contain"
+                className="h-14 w-auto object-contain transition-[filter] duration-300 dark:brightness-0 dark:invert"
               />
             </a>
             <p className="text-sm">

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import ThemeToggle from '@/components/ThemeToggle';
 
 import detalheLogo from '../../assets/img/Detalhe-logo.png';
 
@@ -57,7 +58,11 @@ const Header = () => {
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <Link to="/" onClick={(e) => scrollToSection(e, '#hero')} className="flex items-center space-x-2">
-          <img src={detalheLogo} alt="" className="w-[160px]" />
+          <img
+            src={detalheLogo}
+            alt="Detalhe Cortinas & Persianas"
+            className="w-[160px] transition-[filter] duration-300 dark:brightness-0 dark:invert"
+          />
         </Link>
 
         <nav className="hidden md:flex items-center space-x-6">
@@ -74,6 +79,7 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center space-x-2">
+          <ThemeToggle />
           <Button asChild className="hidden lg:inline-flex cta-button-accent rounded-full px-6 py-3">
              <a href="#contact" onClick={(e) => scrollToSection(e, '#contact')}>
               <WhatsAppIcon className="mr-2 h-4 w-4" /> Solicite um orçamento

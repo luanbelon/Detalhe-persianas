@@ -7,14 +7,25 @@ const services = [
   {
     icon: <Ruler className="w-10 h-10 text-primary mb-4" />,
     title: 'Cortinas Sob Medida',
-    description: 'Criamos cortinas personalizadas que se encaixam perfeitamente em suas janelas e complementam seu estilo de decoração.',
-    details: ["Tecidos nobres e variados", "Modelos clássicos e modernos", "Consultoria especializada"]
+    description: 'Criamos cortinas personalizadas que se encaixam perfeitamente em seu ambiente e complementam seu estilo de decoração.',
+    details: [
+      "Tecidos nobres e variados",
+      "Modelos clássicos e modernos",
+      "Consultoria especializada",
+      "Materiais duráveis e de alta qualidade",
+      "Opções manuais e motorizadas",
+      "Bloqueio de luz e privacidade"
+    ]
   },
   {
     icon: <Settings className="w-10 h-10 text-primary mb-4" />,
-    title: 'Instalação de Persianas',
-    description: 'Oferecemos uma ampla gama de persianas (rolô, romana, vertical, horizontal) com instalação rápida e precisa.',
-    details: ["Materiais duráveis e de alta qualidade", "Opções manuais e motorizadas", "Bloqueio de luz e privacidade"]
+    title: 'Manutenção, Instalação & Lavagem',
+    description: 'Serviço de cortinas e persianas manuais e motorizadas.',
+    details: [
+      "Manutenção preventiva e corretiva",
+      "Lavagem profissional especializada",
+      "Instalação rápida e precisa"
+    ]
   },
   {
     icon: <Palette className="w-10 h-10 text-primary mb-4" />,

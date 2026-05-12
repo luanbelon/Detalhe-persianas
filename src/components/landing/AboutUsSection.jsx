@@ -49,7 +49,7 @@ const AboutUsSection = () => {
               Paixão por Detalhes, Compromisso com a <span className="text-primary">Qualidade</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-6">
-              Na Decora Stillo, acreditamos que cada janela conta uma história. Há mais de uma década, dedicamo-nos a transformar casas e escritórios com cortinas e persianas que unem estética, funcionalidade e o mais alto padrão de qualidade.
+              Na Detalhe Cortinas & Persianas, acreditamos que cada ambiente conta uma história. Há mais de uma década, dedicamo-nos a transformar casas e escritórios com cortinas e persianas que unem estética, funcionalidade e o mais alto padrão de qualidade.
             </p>
             <p className="text-muted-foreground mb-8">
               Nossa equipe de especialistas está pronta para entender suas necessidades e oferecer soluções personalizadas, desde a escolha dos materiais até a instalação impecável. Valorizamos a confiança de nossos clientes e buscamos superar expectativas em cada projeto.
@@ -82,7 +82,7 @@ const AboutUsSection = () => {
           >
             <img  
               className="w-full h-full object-cover" 
-              alt="Equipe Decora Stillo sorrindo em um ambiente de showroom com diversas amostras de tecidos"
+              alt="Equipe Detalhe Cortinas & Persianas sorrindo em um ambiente de showroom com diversas amostras de tecidos"
              src="https://images.unsplash.com/photo-1677268289056-09dffbac755b" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
           </motion.div>

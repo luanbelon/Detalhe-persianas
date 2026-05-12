@@ -7,7 +7,7 @@ const testimonials = [
   {
     name: "Ana Silva",
     location: "São Paulo, SP",
-    quote: "A Decora Stillo transformou minha sala! As cortinas ficaram perfeitas, exatamente como imaginei. Atendimento nota 1000!",
+    quote: "Detalhe Cortinas & Persianas transformou minha sala! As cortinas ficaram perfeitas, exatamente como imaginei. Atendimento nota 1000!",
     rating: 5,
     avatarKey: "avatar-ana"
   },

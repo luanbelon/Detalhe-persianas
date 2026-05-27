@@ -6,7 +6,7 @@ import { CheckCircle, Ruler, Settings, Palette } from 'lucide-react';
 const services = [
   {
     icon: <Ruler className="w-10 h-10 text-primary mb-4" />,
-    title: 'Cortinas Sob Medida',
+    title: 'Cortinas e Persianas sob medida',
     description: 'Criamos cortinas personalizadas que se encaixam perfeitamente em seu ambiente e complementam seu estilo de decoração.',
     details: [
       "Tecidos nobres e variados",

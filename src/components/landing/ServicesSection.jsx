@@ -1,77 +1,49 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-import { CheckCircle, Ruler, Settings, Palette } from 'lucide-react';
-
-const services = [
-  {
-    icon: <Ruler className="w-10 h-10 text-primary mb-4" />,
-    title: 'Cortinas e Persianas sob medida',
-    description: 'Criamos cortinas personalizadas que se encaixam perfeitamente em seu ambiente e complementam seu estilo de decoração.',
-    details: [
-      "Tecidos nobres e variados",
-      "Modelos clássicos e modernos",
-      "Consultoria especializada",
-      "Materiais duráveis e de alta qualidade",
-      "Opções manuais e motorizadas",
-      "Bloqueio de luz e privacidade"
-    ]
-  },
-  {
-    icon: <Settings className="w-10 h-10 text-primary mb-4" />,
-    title: 'Manutenção, Instalação & Lavagem',
-    description: 'Serviço de cortinas e persianas manuais e motorizadas.',
-    details: [
-      "Manutenção preventiva e corretiva",
-      "Lavagem profissional especializada",
-      "Instalação rápida e precisa"
-    ]
-  },
-  {
-    icon: <Palette className="w-10 h-10 text-primary mb-4" />,
-    title: 'Consultoria de Design',
-    description: 'Nossos especialistas ajudam você a escolher as melhores opções de cortinas e persianas para cada ambiente.',
-    details: ["Análise do espaço e iluminação", "Harmonização com o décor existente", "Soluções funcionais e estéticas"]
-  },
-];
+import { CheckCircle } from 'lucide-react';
+import { useSiteContent } from '@/context/SiteContentContext';
+import { renderServiceIcon } from '@/lib/serviceIcons';
+import { getSectionBackgroundStyle, getSectionClassName } from '@/lib/sectionBackground';
 
 const ServicesSection = () => {
+  const { content } = useSiteContent();
+  const { services } = content;
+
   const cardVariants = {
     hidden: { opacity: 0, y: 50, scale: 0.9 },
     visible: (i) => ({
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: {
-        delay: i * 0.15,
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    })
+      transition: { delay: i * 0.15, duration: 0.6, ease: 'easeOut' },
+    }),
   };
 
   return (
-    <section id="services" className="section-padding bg-muted">
+    <section
+      id="services"
+      className={`section-padding ${getSectionClassName(services.background, 'bg-muted')}`}
+      style={getSectionBackgroundStyle(services.background)}
+    >
       <div className="container mx-auto">
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Nossos <span className="text-primary">Serviços Especializados</span>
+            {services.headingPrefix} <span className="text-primary">{services.headingAccent}</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Soluções completas em cortinas e persianas para valorizar cada detalhe do seu espaço.
-          </p>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{services.subtitle}</p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
+          {services.items.map((service, index) => (
             <motion.custom
-              key={index}
+              key={service.id}
               custom={index}
               variants={cardVariants}
               initial="hidden"
@@ -81,7 +53,7 @@ const ServicesSection = () => {
             >
               <Card className="h-full shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden glassmorphism-subtle border-primary/20">
                 <CardHeader className="items-center text-center pt-8">
-                  {service.icon}
+                  {renderServiceIcon(service.icon)}
                   <CardTitle className="text-2xl font-semibold text-foreground">{service.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="text-center flex flex-col flex-grow">

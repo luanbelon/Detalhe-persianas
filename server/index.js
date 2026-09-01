@@ -52,7 +52,7 @@ app.get('/api/content', async (_req, res) => {
     if (rows.length === 0) {
       await sql`
         INSERT INTO site_content (id, content)
-        VALUES (1, ${JSON.stringify(serverDefaultContent)}::jsonb)
+        VALUES (1, ${serverDefaultContent})
         ON CONFLICT (id) DO NOTHING
       `;
       return res.json({ content: serverDefaultContent, updatedAt: new Date().toISOString() });
@@ -75,7 +75,7 @@ app.put('/api/content', authMiddleware, async (req, res) => {
     await ensureSchema();
     const rows = await sql`
       INSERT INTO site_content (id, content, updated_at)
-      VALUES (1, ${JSON.stringify(content)}::jsonb, NOW())
+      VALUES (1, ${content}, NOW())
       ON CONFLICT (id)
       DO UPDATE SET content = EXCLUDED.content, updated_at = NOW()
       RETURNING updated_at

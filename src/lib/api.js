@@ -23,7 +23,10 @@ async function request(path, options = {}) {
   const data = await res.json().catch(() => ({}));
 
   if (!res.ok) {
-    throw new Error(data.error || `Erro ${res.status}`);
+    const fallback = res.status === 401
+      ? 'Sessão expirada — faça login novamente'
+      : `Falha ao comunicar com o servidor (${res.status})`;
+    throw new Error(data.error || fallback);
   }
   return data;
 }

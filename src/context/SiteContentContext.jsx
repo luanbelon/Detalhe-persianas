@@ -1,6 +1,6 @@
 import { createContext, useContext, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { defaultSiteContent } from '@/content/defaultSiteContent';
-import { api } from '@/lib/api';
+import { api, getAuthToken } from '@/lib/api';
 
 const STORAGE_KEY = 'detalhe-site-content-cache';
 
@@ -85,6 +85,7 @@ export function SiteContentProvider({ children }) {
     try {
       await api.saveContent(nextContent);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(nextContent));
+      setSyncError(null);
     } catch (err) {
       setSyncError(err.message);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(nextContent));
@@ -96,6 +97,7 @@ export function SiteContentProvider({ children }) {
 
   const scheduleSave = useCallback((nextContent) => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(nextContent));
+    if (!getAuthToken()) return;
     if (saveTimer.current) clearTimeout(saveTimer.current);
     saveTimer.current = setTimeout(() => {
       persistRemote(nextContent).catch(() => {});

@@ -42,7 +42,7 @@ export async function handleGetContent(_req, res) {
     if (rows.length === 0) {
       await sql`
         INSERT INTO site_content (id, content)
-        VALUES (1, ${JSON.stringify(serverDefaultContent)}::jsonb)
+        VALUES (1, ${serverDefaultContent})
         ON CONFLICT (id) DO NOTHING
       `;
       return res.json({ content: serverDefaultContent, updatedAt: new Date().toISOString() });
@@ -68,7 +68,7 @@ export async function handlePutContent(req, res) {
     await ensureSchema();
     const rows = await sql`
       INSERT INTO site_content (id, content, updated_at)
-      VALUES (1, ${JSON.stringify(content)}::jsonb, NOW())
+      VALUES (1, ${content}, NOW())
       ON CONFLICT (id)
       DO UPDATE SET content = EXCLUDED.content, updated_at = NOW()
       RETURNING updated_at
@@ -89,7 +89,7 @@ export async function handleResetContent(req, res) {
     await ensureSchema();
     const rows = await sql`
       INSERT INTO site_content (id, content, updated_at)
-      VALUES (1, ${JSON.stringify(serverDefaultContent)}::jsonb, NOW())
+      VALUES (1, ${serverDefaultContent}, NOW())
       ON CONFLICT (id)
       DO UPDATE SET content = EXCLUDED.content, updated_at = NOW()
       RETURNING content, updated_at

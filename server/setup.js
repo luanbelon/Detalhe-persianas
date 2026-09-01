@@ -15,7 +15,7 @@ async function setup() {
   if (existing.length === 0) {
     await sql`
       INSERT INTO site_content (id, content)
-      VALUES (1, ${JSON.stringify(serverDefaultContent)}::jsonb)
+      VALUES (1, ${serverDefaultContent})
     `;
     console.log('✓ Tabela criada e conteúdo inicial inserido.');
   } else {

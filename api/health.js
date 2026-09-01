@@ -1,4 +1,4 @@
-import { handleHealth } from '../../server/apiHandlers.js';
+import { handleHealth } from '../server/apiHandlers.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {

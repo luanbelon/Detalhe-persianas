@@ -1,13 +1,12 @@
-import 'dotenv/config';
 import { neon } from '@neondatabase/serverless';
 
 const connectionString = process.env.DATABASE_URL;
 
 if (!connectionString) {
-  console.warn('DATABASE_URL não definida. Configure o arquivo .env');
+  throw new Error('DATABASE_URL não configurada nas variáveis de ambiente');
 }
 
-export const sql = neon(connectionString || '');
+export const sql = neon(connectionString);
 
 export async function ensureSchema() {
   await sql`

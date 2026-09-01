@@ -1,4 +1,4 @@
-import { handleGetContent, handlePutContent } from '../../server/apiHandlers.js';
+import { handleGetContent, handlePutContent } from '../server/apiHandlers.js';
 
 export default async function handler(req, res) {
   if (req.method === 'GET') return handleGetContent(req, res);
